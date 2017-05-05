@@ -1,4 +1,3 @@
-#!/bin/bash
 <<'COMMENT'
 Saca lineas innecesarias de los logs antes de ser enviados via email
 Params: RUTA = <PROYECTO>/PentahoLogs

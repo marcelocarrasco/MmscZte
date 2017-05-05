@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <job>
-  <name>MMSC_ZTE_EndToEnd</name>
+  <name>MMSC_LICENSE_KPI_ZTE_DAY_EndToEnd</name>
     <description/>
     <extended_description/>
     <job_version/>
     <job_status>0</job_status>
   <directory>&#x2f;</directory>
   <created_user>-</created_user>
-  <created_date>2017&#x2f;03&#x2f;17 14&#x3a;22&#x3a;32.135</created_date>
+  <created_date>2017&#x2f;04&#x2f;03 11&#x3a;23&#x3a;28.449</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2017&#x2f;03&#x2f;17 14&#x3a;22&#x3a;32.135</modified_date>
+  <modified_date>2017&#x2f;04&#x2f;03 11&#x3a;23&#x3a;28.449</modified_date>
     <parameters>
         <parameter>
             <name>FECHA_PROC</name>
-            <default_value/>
-            <description>Formato YYYYMMDD, se pasa la fecha del dia anterior.</description>
+            <default_value>20170402</default_value>
+            <description/>
         </parameter>
     </parameters>
     <slaveservers>
@@ -57,7 +57,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>48</xloc>
-      <yloc>176</yloc>
+      <yloc>48</yloc>
       </entry>
     <entry>
       <name>SetEnvironment</name>
@@ -89,72 +89,16 @@
       </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>176</xloc>
-      <yloc>176</yloc>
+      <xloc>160</xloc>
+      <yloc>48</yloc>
       </entry>
     <entry>
-      <name>Success</name>
-      <description/>
-      <type>SUCCESS</type>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>560</xloc>
-      <yloc>304</yloc>
-      </entry>
-    <entry>
-      <name>GetFilesFromServer</name>
-      <description/>
-      <type>SHELL</type>
-      <filename/>
-      <work_directory/>
-      <arg_from_previous>N</arg_from_previous>
-      <exec_per_row>N</exec_per_row>
-      <set_logfile>N</set_logfile>
-      <logfile/>
-      <set_append_logfile>N</set_append_logfile>
-      <logext/>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <insertScript>Y</insertScript>
-      <script>&#x23;&#x21;&#x2f;bin&#x2f;bash&#xa;&#xa;&#x24;&#x7b;SCP-ARG&#x7d;&#xa;&#x24;&#x7b;SCP-UY&#x7d;&#xa;&#x24;&#x7b;SCP-PY&#x7d;&#xa;</script>
-      <loglevel>Basic</loglevel>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>320</xloc>
-      <yloc>176</yloc>
-      </entry>
-    <entry>
-      <name>Cleanup Files</name>
-      <description/>
-      <type>SHELL</type>
-      <filename/>
-      <work_directory/>
-      <arg_from_previous>N</arg_from_previous>
-      <exec_per_row>N</exec_per_row>
-      <set_logfile>N</set_logfile>
-      <logfile/>
-      <set_append_logfile>N</set_append_logfile>
-      <logext/>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <insertScript>Y</insertScript>
-      <script>&#x23;&#x21;&#x2f;bin&#x2f;bash&#xa;&#xa;for f in &#x24;&#x7b;MMSCZTE-HOME&#x7d;&#x2f;Data&#x2f;&#x2a;&#x2a;&#x2f;&#x2a;.csv&#xa;do&#xa;  &#x23; take action on each file. &#x24;f store current file name&#xa;  &#x23;sed -n &#x27;&#x2f;Request&#x2f;,&#x24;&#x7b;p&#x7d;&#x27; &#x22;&#x24;f&#x22; &#x3e; &#x22;&#x24;f&#x22;&#xa;  mv &#x22;&#x24;f&#x22; &#x60;echo &#x24;f &#x7c; tr &#x27;&#x28;&#x27; &#x27;_&#x27; &#x7c; tr &#x27;&#x29;&#x27; &#x27;_&#x27; &#x7c; tr &#x27; &#x27; &#x27;_&#x27;&#x60;&#xa;done&#xa;&#x23;&#xa;&#x23; Service Hour Report files&#xa;&#x23;&#xa;for arc in &#x24;&#x7b;MMSCZTE-HOME&#x7d;&#x2f;Data&#x2f;&#x2a;&#x2a;&#x2f;MMS_Service_Hour&#x2a;.csv&#xa;do&#xa;  &#x23; Delete all trailing blank lines at end of file &#x28;only&#x29;.&#xa;  sed -i &#x27;&#x2f;&#x5e;&#x5c;s&#x2a;&#x24;&#x2f;d&#x27; &#x24;arc&#xa;  &#x23; delete first line of current file name&#xa;  sed -i &#x27;1,2d&#x27; &#x24;arc&#xa;  &#x23;&#xa;  sed -i &#x27;s&#x2f;&#x24;&#x2f;,&#x24;&#x7b;FECHA_PROC&#x7d;&#x2f;g&#x27; &#x24;arc&#xa;  &#x23; Delete the extra carriage return&#xa;  sed -i &#x27;s&#x2f;&#x5c;r&#x2f;&#x2f;g&#x27; &#x24;arc&#xa;  &#x23; Add new header&#xa;  sed -i &#x27;1iMMSC,PAIS,TIME_OF_PERIOD,NBR_MMS_SENT,NBR_MMS_SENT_BY_TERMINAL,NBR_MMS_SENT_BY_APP,NBR_MMS_RECEIVED_BY_TERMINAL,NBR_MMSC_FWR_TO_OTHER_MMSC,NBR_MMSC_FWR_REC_FROM_MMSC,NBR_TERM_TO_TERM,NBR_TERM_TO_APP,FECHA_PROC&#x27; &#x24;arc&#xa;  &#x23; Translate Argentina To ARG&#xa;  sed -i &#x27;s&#x2f;Argentina&#x2f;ARG&#x2f;g&#x27; &#x24;arc&#xa;  &#x23; Translate Uruguay To UY&#xa;  sed -i &#x27;s&#x2f;Uruguay&#x2f;UY&#x2f;g&#x27; &#x24;arc&#xa;  &#x23; Translate Paraguay To PY&#xa;  sed -i &#x27;s&#x2f;Paraguay&#x2f;PY&#x2f;g&#x27; &#x24;arc&#xa;done&#xa;&#x23;&#xa;&#x23; License Statistic Report files &#x28;se descarta hasta nuevo aviso&#x29;&#xa;&#x23;&#xa;&#x23;for f in &#x24;&#x7b;MMSCZTE-HOME&#x7d;&#x2f;Data&#x2f;&#x2a;.csv&#xa;&#x23;do&#xa;  &#x23; take action on each file. &#x24;f store current file name&#xa;  &#x23;sed -n &#x27;&#x2f;Request&#x2f;,&#x24;&#x7b;p&#x7d;&#x27; &#x22;&#x24;f&#x22; &#x3e; &#x22;&#x24;f&#x22;&#xa;  &#x23;mv &#x22;&#x24;f&#x22; &#x60;echo &#x24;f &#x7c; tr &#x27;&#x28;&#x27; &#x27;_&#x27; &#x7c; tr &#x27;&#x29;&#x27; &#x27;_&#x27; &#x7c; tr &#x27; &#x27; &#x27;_&#x27;&#x60;&#xa;&#x23;done&#xa;&#x23;&#xa;&#x23;for arc in &#x24;&#x7b;MMSCZTE-HOME&#x7d;&#x2f;Data&#x2f;MMS_License_Statistic_Report__daily__&#x2a;.csv&#xa;&#x23;do&#xa;  &#x23; Delete all trailing blank lines at end of file &#x28;only&#x29;.&#xa;  &#x23;sed -i &#x27;&#x2f;&#x5e;&#x5c;s&#x2a;&#x24;&#x2f;d&#x27; &#x24;arc&#xa;  &#x23; delete first twoo lines of current file name&#xa;  &#x23;sed -i &#x27;1,2d&#x27; &#x24;arc&#xa;  &#x23; Add new header&#xa;  &#x23;sed -i &#x27;1iMMSC,FECHA,MMS_BUSY_SERVICE_TRAFFIC&#x27; &#x24;arc&#xa;&#x23;done&#xa;</script>
-      <loglevel>Basic</loglevel>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>464</xloc>
-      <yloc>176</yloc>
-      </entry>
-    <entry>
-      <name>PopulateFilesTable</name>
+      <name>Pop. MMSC_REPORT_KPI_ZTE_DAY_TMP Table</name>
       <description/>
       <type>JOB</type>
       <specification_method>filename</specification_method>
       <job_object_id/>
-      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;PopulateFilesTable.kjb</filename>
+      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;PopularMMSC_REPORT_KPI_ZTE_DAY_TMPTable.kjb</filename>
       <jobname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -176,16 +120,16 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>608</xloc>
-      <yloc>176</yloc>
+      <xloc>400</xloc>
+      <yloc>48</yloc>
       </entry>
     <entry>
-      <name>MMSC_SERVICE_ZTE_EndToEnd</name>
+      <name>Pop. MMSC_REPORT_KPI_ZTE_DAY_AUX Table</name>
       <description/>
       <type>JOB</type>
       <specification_method>filename</specification_method>
       <job_object_id/>
-      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;MMSC_SERVICE_ZTE_EndToEnd.kjb</filename>
+      <filename/>
       <jobname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -207,16 +151,16 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>816</xloc>
-      <yloc>176</yloc>
+      <xloc>752</xloc>
+      <yloc>48</yloc>
       </entry>
     <entry>
-      <name>Calc. Sumarizaciones DAY BH IBHW</name>
+      <name>Pop. MMSC_REPORT_KPI_ZTE_DAY Table</name>
       <description/>
       <type>TRANS</type>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;CalSumarizacionesDAY_BH_IBHW.ktr</filename>
+      <filename/>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -236,25 +180,49 @@
       <follow_abort_remote>N</follow_abort_remote>
       <create_parent_folder>N</create_parent_folder>
       <logging_remote_work>N</logging_remote_work>
-      <parameters>        <pass_all_parameters>Y</pass_all_parameters>
-      </parameters>      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>816</xloc>
-      <yloc>304</yloc>
-      </entry>
-    <entry>
-      <name>Write To Log</name>
-      <description/>
-      <type>WRITE_TO_LOG</type>
-      <logmessage>&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#xa;&#x3d;&#x3d;&#x3d;&#x3d;&#x3e;&#x3e;&#x3e; No hay archivos a procesar o estan vacios &#x3c;&#x3c;&#x3c;&#x3d;&#x3d;&#x3d;&#x3d;&#xa;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;</logmessage>
-      <loglevel>Error</loglevel>
-      <logsubject/>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>704</xloc>
-      <yloc>240</yloc>
+      <xloc>752</xloc>
+      <yloc>208</yloc>
+      </entry>
+    <entry>
+      <name>Zip file</name>
+      <description/>
+      <type>ZIP_FILE</type>
+      <zipfilename/>
+      <compressionrate>1</compressionrate>
+      <ifzipfileexists>2</ifzipfileexists>
+      <wildcard/>
+      <wildcardexclude/>
+      <sourcedirectory/>
+      <movetodirectory/>
+      <afterzip>0</afterzip>
+      <addfiletoresult>N</addfiletoresult>
+      <isfromprevious>N</isfromprevious>
+      <createparentfolder>N</createparentfolder>
+      <adddate>N</adddate>
+      <addtime>N</addtime>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <createMoveToDirectory>N</createMoveToDirectory>
+      <include_subfolders>Y</include_subfolders>
+      <stored_source_path_depth>1</stored_source_path_depth>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>480</xloc>
+      <yloc>208</yloc>
+      </entry>
+    <entry>
+      <name>Success</name>
+      <description/>
+      <type>SUCCESS</type>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>336</xloc>
+      <yloc>208</yloc>
       </entry>
   </entries>
   <hops>
@@ -269,7 +237,7 @@
     </hop>
     <hop>
       <from>SetEnvironment</from>
-      <to>GetFilesFromServer</to>
+      <to>Pop. MMSC_REPORT_KPI_ZTE_DAY_TMP Table</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -277,8 +245,8 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>GetFilesFromServer</from>
-      <to>Cleanup Files</to>
+      <from>Pop. MMSC_REPORT_KPI_ZTE_DAY_TMP Table</from>
+      <to>Pop. MMSC_REPORT_KPI_ZTE_DAY_AUX Table</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -286,82 +254,34 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Cleanup Files</from>
-      <to>PopulateFilesTable</to>
+      <from>Pop. MMSC_REPORT_KPI_ZTE_DAY_AUX Table</from>
+      <to>Pop. MMSC_REPORT_KPI_ZTE_DAY Table</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
       <evaluation>Y</evaluation>
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>PopulateFilesTable</from>
-      <to>MMSC_SERVICE_ZTE_EndToEnd</to>
+      <from>Pop. MMSC_REPORT_KPI_ZTE_DAY Table</from>
+      <to>Zip file</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
       <evaluation>Y</evaluation>
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Calc. Sumarizaciones DAY BH IBHW</from>
+      <from>Zip file</from>
       <to>Success</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>MMSC_SERVICE_ZTE_EndToEnd</from>
-      <to>Calc. Sumarizaciones DAY BH IBHW</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>MMSC_SERVICE_ZTE_EndToEnd</from>
-      <to>Write To Log</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>N</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>Write To Log</from>
-      <to>Success</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
       <evaluation>Y</evaluation>
       <unconditional>N</unconditional>
     </hop>
   </hops>
   <notepads>
-    <notepad>
-      <note>FECHA_PROC &#x3d; sysdate &#x28;YYYYMMDD&#x29;, la info consignada en los archivos corresponde al dia anterior, &#xa;es decir, la info viene a dia vencido.&#xa;---------------------------------------------------------------------------------------------------------------------&#xa;Para calcular las sumarizaciones se pasa como parametro FECHA_PROC y dentro del&#xa;procedimiento, calculo FECHA_PROC - 1.</note>
-      <xloc>112</xloc>
-      <yloc>16</yloc>
-      <width>692</width>
-      <heigth>95</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>10</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
   </notepads>
 
 </job>

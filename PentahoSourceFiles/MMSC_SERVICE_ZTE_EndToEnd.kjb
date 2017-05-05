@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <job>
-  <name>Pop. MMSC_SERVICE_ZTE_AUX</name>
+  <name>MMSC_SERVICE_ZTE_EndToEnd</name>
     <description/>
     <extended_description/>
     <job_version/>
-    <job_status>0</job_status>
   <directory>&#x2f;</directory>
   <created_user>-</created_user>
-  <created_date>2017&#x2f;03&#x2f;22 11&#x3a;34&#x3a;28.625</created_date>
+  <created_date>2017&#x2f;03&#x2f;27 17&#x3a;12&#x3a;42.164</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2017&#x2f;03&#x2f;22 11&#x3a;34&#x3a;28.625</modified_date>
+  <modified_date>2017&#x2f;03&#x2f;27 17&#x3a;12&#x3a;42.164</modified_date>
     <parameters>
     </parameters>
   <connection>
@@ -58,6 +57,91 @@
    <pass_batchid>N</pass_batchid>
    <shared_objects_file/>
   <entries>
+    <entry>
+      <name>Pop. MMSC_SERVICE_ZTE_TMP</name>
+      <description/>
+      <type>JOB</type>
+      <specification_method>filename</specification_method>
+      <job_object_id/>
+      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;PopularMMSC_SERVICE_ZTE_TMPTable.kjb</filename>
+      <jobname/>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Nothing</loglevel>
+      <slave_server_name/>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <expand_remote_job>N</expand_remote_job>
+      <create_parent_folder>N</create_parent_folder>
+      <pass_export>N</pass_export>
+      <parameters>        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>      <set_append_logfile>N</set_append_logfile>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>464</xloc>
+      <yloc>64</yloc>
+      </entry>
+    <entry>
+      <name>Pop. MMSC_SERVICE_ZTE_AUX</name>
+      <description/>
+      <type>JOB</type>
+      <specification_method>filename</specification_method>
+      <job_object_id/>
+      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;PopularMMSC_SERVICE_ZTE_AUXTable.kjb</filename>
+      <jobname/>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Nothing</loglevel>
+      <slave_server_name/>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <expand_remote_job>N</expand_remote_job>
+      <create_parent_folder>N</create_parent_folder>
+      <pass_export>N</pass_export>
+      <parameters>        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>      <set_append_logfile>N</set_append_logfile>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>720</xloc>
+      <yloc>64</yloc>
+      </entry>
+    <entry>
+      <name>Zip Processed Files</name>
+      <description/>
+      <type>SHELL</type>
+      <filename/>
+      <work_directory>&#x24;&#x7b;MMSCZTE-HOME&#x7d;&#x2f;Data</work_directory>
+      <arg_from_previous>N</arg_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <set_append_logfile>N</set_append_logfile>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <insertScript>Y</insertScript>
+      <script>&#x23;&#x21;&#x2f;bin&#x2f;bash&#xa;&#xa;zip -rm &#x24;&#x7b;MMSCZTE-HOME&#x7d;&#x2f;Data&#x2f;mmsc_service_hour_report_hourly_&#x24;&#x7b;FECHA_PROC&#x7d;.zip &#x24;&#x7b;MMSCZTE-HOME&#x7d;&#x2f;Data&#x2f;ARG&#x2f;&#x24;&#x7b;SERVICE-FILE&#x7d;&#x2a;.csv &#x24;&#x7b;MMSCZTE-HOME&#x7d;&#x2f;Data&#x2f;UY&#x2f;&#x24;&#x7b;SERVICE-FILE&#x7d;&#x2a;.csv &#x24;&#x7b;MMSCZTE-HOME&#x7d;&#x2f;Data&#x2f;PY&#x2f;&#x24;&#x7b;SERVICE-FILE&#x7d;&#x2a;.csv</script>
+      <loglevel>Basic</loglevel>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>720</xloc>
+      <yloc>384</yloc>
+      </entry>
     <entry>
       <name>START</name>
       <description/>
@@ -108,7 +192,7 @@
       </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>224</xloc>
+      <xloc>280</xloc>
       <yloc>64</yloc>
       </entry>
     <entry>
@@ -118,188 +202,40 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>704</xloc>
-      <yloc>464</yloc>
+      <xloc>512</xloc>
+      <yloc>384</yloc>
       </entry>
     <entry>
-      <name>Get File Names From DB</name>
-      <description/>
-      <type>TRANS</type>
-      <specification_method>filename</specification_method>
-      <trans_object_id/>
-      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;GetFileNamesFromDB.ktr</filename>
-      <transname/>
-      <arg_from_previous>N</arg_from_previous>
-      <params_from_previous>N</params_from_previous>
-      <exec_per_row>N</exec_per_row>
-      <clear_rows>Y</clear_rows>
-      <clear_files>Y</clear_files>
-      <set_logfile>N</set_logfile>
-      <logfile/>
-      <logext/>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <loglevel>Basic</loglevel>
-      <cluster>N</cluster>
-      <slave_server_name/>
-      <set_append_logfile>N</set_append_logfile>
-      <wait_until_finished>Y</wait_until_finished>
-      <follow_abort_remote>N</follow_abort_remote>
-      <create_parent_folder>N</create_parent_folder>
-      <logging_remote_work>N</logging_remote_work>
-      <parameters>        <pass_all_parameters>Y</pass_all_parameters>
-      </parameters>      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>424</xloc>
-      <yloc>64</yloc>
-      </entry>
-    <entry>
-      <name>Imp. Service Report Into MMSC_SERVICE_ZTE_AUX</name>
-      <description/>
-      <type>TRANS</type>
-      <specification_method>filename</specification_method>
-      <trans_object_id/>
-      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;ImportServiceReportIntoMMSC_SERVICE_ZTE_AUX.ktr</filename>
-      <transname/>
-      <arg_from_previous>N</arg_from_previous>
-      <params_from_previous>N</params_from_previous>
-      <exec_per_row>Y</exec_per_row>
-      <clear_rows>Y</clear_rows>
-      <clear_files>Y</clear_files>
-      <set_logfile>N</set_logfile>
-      <logfile/>
-      <logext/>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <loglevel>Basic</loglevel>
-      <cluster>N</cluster>
-      <slave_server_name/>
-      <set_append_logfile>N</set_append_logfile>
-      <wait_until_finished>Y</wait_until_finished>
-      <follow_abort_remote>N</follow_abort_remote>
-      <create_parent_folder>N</create_parent_folder>
-      <logging_remote_work>N</logging_remote_work>
-      <parameters>        <pass_all_parameters>Y</pass_all_parameters>
-      </parameters>      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>704</xloc>
-      <yloc>64</yloc>
-      </entry>
-    <entry>
-      <name>Truncate MMSC_SERVICE_ZTE_AUX table</name>
-      <description/>
-      <type>TRUNCATE_TABLES</type>
-      <connection>db_connection</connection>
-      <arg_from_previous>N</arg_from_previous>
-      <fields>
-        <field>
-          <name>MMSC_SERVICE_ZTE_AUX</name>
-          <schemaname>&#x24;&#x7b;DB-SCHEMA&#x7d;</schemaname>
-        </field>
-      </fields>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>320</xloc>
-      <yloc>192</yloc>
-      </entry>
-    <entry>
-      <name>Merge MMSC_SERVICE_ZTE_AUX &#x26; MMSC_SERVICE_ZTE_TMP</name>
+      <name>Merge Into MMSC_SERVICE_ZTE_HOUR</name>
       <description/>
       <type>SQL</type>
-      <sql>merge into MMSC_SERVICE_ZTE_AUX AUX&#xa;USING &#x28;SELECT FECHA,&#xa;              PAIS,&#xa;              MMSC,&#xa;              NBR_MMS_SENT,&#xa;              NBR_MMS_SENT_BY_TERMINAL,&#xa;              NBR_MMS_SENT_BY_APP,&#xa;              NBR_MMS_RECEIVED_BY_TERMINAL,&#xa;              NBR_MMSC_FWR_TO_OTHER_MMSC,&#xa;              NBR_MMSC_FWR_REC_FROM_MMSC,&#xa;              NBR_TERM_TO_TERM,&#xa;              NBR_TERM_TO_APP,&#xa;              TIME_OF_PERIOD,&#xa;              FECHA_PROC&#xa;        FROM MMSC_SERVICE_ZTE_TMP&#x29; TMP&#xa;ON &#x28;AUX.FECHA &#x3d; TMP.FECHA AND AUX.PAIS &#x3d; TMP.PAIS AND AUX.MMSC &#x3d; TMP.MMSC AND AUX.TIME_OF_PERIOD &#x3d; TMP.TIME_OF_PERIOD&#x29;&#xa;WHEN NOT MATCHED THEN&#xa;  INSERT&#x28;PAIS,MMSC,NBR_MMS_SENT,NBR_MMS_SENT_BY_TERMINAL,NBR_MMS_SENT_BY_APP,NBR_MMS_RECEIVED_BY_TERMINAL,&#xa;        NBR_MMSC_FWR_TO_OTHER_MMSC,NBR_MMSC_FWR_REC_FROM_MMSC,NBR_TERM_TO_TERM,NBR_TERM_TO_APP,TIME_OF_PERIOD,FECHA_PROC&#x29; &#xa;  VALUES &#x28;TMP.PAIS,&#xa;          TMP.MMSC,&#xa;          TMP.NBR_MMS_SENT,&#xa;          TMP.NBR_MMS_SENT_BY_TERMINAL,&#xa;          TMP.NBR_MMS_SENT_BY_APP,&#xa;          TMP.NBR_MMS_RECEIVED_BY_TERMINAL,&#xa;          TMP.NBR_MMSC_FWR_TO_OTHER_MMSC,&#xa;          TMP.NBR_MMSC_FWR_REC_FROM_MMSC,&#xa;          TMP.NBR_TERM_TO_TERM,&#xa;          TMP.NBR_TERM_TO_APP,&#xa;          TMP.TIME_OF_PERIOD,&#xa;          TMP.FECHA_PROC&#x29;</sql>
+      <sql>MERGE INTO MMSC_SERVICE_ZTE_HOUR AUX&#xa;USING &#x28;SELECT FECHA,&#xa;              PAIS,&#xa;              MMSC,&#xa;              NBR_MMS_SENT,&#xa;              NBR_MMS_SENT_BY_TERMINAL,&#xa;              NBR_MMS_SENT_BY_APP,&#xa;              NBR_MMS_RECEIVED_BY_TERMINAL,&#xa;              NBR_MMSC_FWR_TO_OTHER_MMSC,&#xa;              NBR_MMSC_FWR_REC_FROM_MMSC,&#xa;              NBR_TERM_TO_TERM,&#xa;              NBR_TERM_TO_APP,&#xa;              TIME_OF_PERIOD,&#xa;              FECHA_PROC&#xa;        FROM MMSC_SERVICE_ZTE_AUX&#x29; TMP&#xa;ON &#x28;AUX.FECHA &#x3d; TMP.FECHA AND AUX.PAIS &#x3d; TMP.PAIS AND AUX.MMSC &#x3d; TMP.MMSC&#x29;&#xa;WHEN MATCHED THEN&#xa;  UPDATE SET&#xa;    AUX.NBR_MMS_SENT                  &#x3d; TMP.NBR_MMS_SENT,&#xa;    AUX.NBR_MMS_SENT_BY_TERMINAL      &#x3d; TMP.NBR_MMS_SENT_BY_TERMINAL,&#xa;    AUX.NBR_MMS_SENT_BY_APP           &#x3d; TMP.NBR_MMS_SENT_BY_APP,&#xa;    AUX.NBR_MMS_RECEIVED_BY_TERMINAL  &#x3d; TMP.NBR_MMS_RECEIVED_BY_TERMINAL,&#xa;    AUX.NBR_MMSC_FWR_TO_OTHER_MMSC    &#x3d; TMP.NBR_MMSC_FWR_TO_OTHER_MMSC,&#xa;    AUX.NBR_MMSC_FWR_REC_FROM_MMSC    &#x3d; TMP.NBR_MMSC_FWR_REC_FROM_MMSC,&#xa;    AUX.NBR_TERM_TO_TERM              &#x3d; TMP.NBR_TERM_TO_TERM,&#xa;    AUX.NBR_TERM_TO_APP               &#x3d; TMP.NBR_TERM_TO_APP&#xa;WHEN NOT MATCHED THEN&#xa;  INSERT&#x28;FECHA,PAIS,MMSC,NBR_MMS_SENT,NBR_MMS_SENT_BY_TERMINAL,NBR_MMS_SENT_BY_APP,NBR_MMS_RECEIVED_BY_TERMINAL,&#xa;        NBR_MMSC_FWR_TO_OTHER_MMSC,NBR_MMSC_FWR_REC_FROM_MMSC,NBR_TERM_TO_TERM,NBR_TERM_TO_APP&#x29; &#xa;  VALUES &#x28;TMP.FECHA,&#xa;          TMP.PAIS,&#xa;          TMP.MMSC,&#xa;          TMP.NBR_MMS_SENT,&#xa;          TMP.NBR_MMS_SENT_BY_TERMINAL,&#xa;          TMP.NBR_MMS_SENT_BY_APP,&#xa;          TMP.NBR_MMS_RECEIVED_BY_TERMINAL,&#xa;          TMP.NBR_MMSC_FWR_TO_OTHER_MMSC,&#xa;          TMP.NBR_MMSC_FWR_REC_FROM_MMSC,&#xa;          TMP.NBR_TERM_TO_TERM,&#xa;          TMP.NBR_TERM_TO_APP&#x29;</sql>
       <useVariableSubstitution>F</useVariableSubstitution>
       <sqlfromfile>F</sqlfromfile>
       <sqlfilename/>
-      <sendOneStatement>F</sendOneStatement>
+      <sendOneStatement>T</sendOneStatement>
       <connection>db_connection</connection>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>704</xloc>
-      <yloc>352</yloc>
-      </entry>
-    <entry>
-      <name>UpFilesTable</name>
-      <description/>
-      <type>JOB</type>
-      <specification_method>filename</specification_method>
-      <job_object_id/>
-      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;UpFilesTable.kjb</filename>
-      <jobname/>
-      <arg_from_previous>N</arg_from_previous>
-      <params_from_previous>N</params_from_previous>
-      <exec_per_row>N</exec_per_row>
-      <set_logfile>N</set_logfile>
-      <logfile/>
-      <logext/>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <loglevel>Nothing</loglevel>
-      <slave_server_name/>
-      <wait_until_finished>Y</wait_until_finished>
-      <follow_abort_remote>N</follow_abort_remote>
-      <expand_remote_job>N</expand_remote_job>
-      <create_parent_folder>N</create_parent_folder>
-      <pass_export>N</pass_export>
-      <parameters>        <pass_all_parameters>Y</pass_all_parameters>
-      </parameters>      <set_append_logfile>N</set_append_logfile>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>704</xloc>
-      <yloc>160</yloc>
-      </entry>
-    <entry>
-      <name>Set variables</name>
-      <description/>
-      <type>SET_VARIABLES</type>
-      <replacevars>Y</replacevars>
-      <filename>&#x24;&#x7b;MMSCZTE-HOME&#x7d;&#x2f;mmsczte_cnf.properties</filename>
-      <file_variable_type>CURRENT_JOB</file_variable_type>
-      <fields>
-        <field>
-          <variable_name>NOMBRE-FILE</variable_name>
-          <variable_value>&#x24;&#x7b;SERVICE-FILE&#x7d;</variable_value>
-          <variable_type>CURRENT_JOB</variable_type>
-        </field>
-      </fields>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>520</xloc>
-      <yloc>192</yloc>
-      </entry>
-    <entry>
-      <name>Write To Log</name>
-      <description/>
-      <type>WRITE_TO_LOG</type>
-      <logmessage>No hay archivos se procede al MERGE</logmessage>
-      <loglevel>Error</loglevel>
-      <logsubject/>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>928</xloc>
-      <yloc>160</yloc>
-      </entry>
-    <entry>
-      <name>Update TIME_OF_PERIOD</name>
-      <description/>
-      <type>SQL</type>
-      <sql>UPDATE MMSC_SERVICE_ZTE_AUX SET&#xa;	TIME_OF_PERIOD &#x3d; &#x28;&#xa;		CASE TIME_OF_PERIOD&#xa;        	WHEN &#x27;0&#x3a;00 &#x7e; 1&#x3a;00&#x27; THEN &#x27;00&#x3a;00 &#x7e; 01&#x3a;00&#x27;&#xa;	        WHEN &#x27;1&#x3a;00 &#x7e; 2&#x3a;00&#x27; THEN &#x27;01&#x3a;00 &#x7e; 02&#x3a;00&#x27;&#xa;			WHEN &#x27;2&#x3a;00 &#x7e; 3&#x3a;00&#x27; THEN &#x27;02&#x3a;00 &#x7e; 03&#x3a;00&#x27;&#xa;	        WHEN &#x27;3&#x3a;00 &#x7e; 4&#x3a;00&#x27; THEN &#x27;03&#x3a;00 &#x7e; 04&#x3a;00&#x27;&#xa;			WHEN &#x27;4&#x3a;00 &#x7e; 5&#x3a;00&#x27; THEN &#x27;04&#x3a;00 &#x7e; 05&#x3a;00&#x27;&#xa;			WHEN &#x27;5&#x3a;00 &#x7e; 6&#x3a;00&#x27; THEN &#x27;05&#x3a;00 &#x7e; 06&#x3a;00&#x27;&#xa;			WHEN &#x27;6&#x3a;00 &#x7e; 7&#x3a;00&#x27; THEN &#x27;06&#x3a;00 &#x7e; 07&#x3a;00&#x27;&#xa;			WHEN &#x27;7&#x3a;00 &#x7e; 8&#x3a;00&#x27; THEN &#x27;07&#x3a;00 &#x7e; 08&#x3a;00&#x27;&#xa;			WHEN &#x27;8&#x3a;00 &#x7e; 9&#x3a;00&#x27; THEN &#x27;08&#x3a;00 &#x7e; 09&#x3a;00&#x27;&#xa;			WHEN &#x27;9&#x3a;00 &#x7e; 10&#x3a;00&#x27; THEN &#x27;09&#x3a;00 &#x7e; 10&#x3a;00&#x27; &#xa;			ELSE TIME_OF_PERIOD&#xa;        END&#x29;&#xa;</sql>
-      <useVariableSubstitution>F</useVariableSubstitution>
-      <sqlfromfile>F</sqlfromfile>
-      <sqlfilename/>
-      <sendOneStatement>F</sendOneStatement>
-      <connection>db_connection</connection>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>704</xloc>
+      <xloc>720</xloc>
       <yloc>256</yloc>
+      </entry>
+    <entry>
+      <name>Truncar Particion para &#x24;&#x7b;FECHA_PROC&#x7d;</name>
+      <description/>
+      <type>SQL</type>
+      <sql>DELETE FROM mmsc_service_zte_hour &#xa;WHERE TO_CHAR&#x28;FECHA,&#x27;YYYYMMDD&#x27;&#x29; &#x3d;  TO_CHAR&#x28;TO_DATE&#x28;&#x27;&#x24;&#x7b;FECHA_PROC&#x7d;&#x27;,&#x27;YYYYMMDD&#x27;&#x29;-1,&#x27;YYYYMMDD&#x27;&#x29;</sql>
+      <useVariableSubstitution>T</useVariableSubstitution>
+      <sqlfromfile>F</sqlfromfile>
+      <sqlfilename/>
+      <sendOneStatement>F</sendOneStatement>
+      <connection>db_connection</connection>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>720</xloc>
+      <yloc>144</yloc>
       </entry>
   </entries>
   <hops>
@@ -313,17 +249,8 @@
       <unconditional>Y</unconditional>
     </hop>
     <hop>
-      <from>Get File Names From DB</from>
-      <to>Imp. Service Report Into MMSC_SERVICE_ZTE_AUX</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
       <from>SetEnvironment</from>
-      <to>Truncate MMSC_SERVICE_ZTE_AUX table</to>
+      <to>Pop. MMSC_SERVICE_ZTE_TMP</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -331,7 +258,16 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Merge MMSC_SERVICE_ZTE_AUX &#x26; MMSC_SERVICE_ZTE_TMP</from>
+      <from>Pop. MMSC_SERVICE_ZTE_TMP</from>
+      <to>Pop. MMSC_SERVICE_ZTE_AUX</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Zip Processed Files</from>
       <to>Success</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -340,8 +276,8 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Imp. Service Report Into MMSC_SERVICE_ZTE_AUX</from>
-      <to>UpFilesTable</to>
+      <from>Merge Into MMSC_SERVICE_ZTE_HOUR</from>
+      <to>Zip Processed Files</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -349,8 +285,8 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Truncate MMSC_SERVICE_ZTE_AUX table</from>
-      <to>Set variables</to>
+      <from>Pop. MMSC_SERVICE_ZTE_AUX</from>
+      <to>Truncar Particion para &#x24;&#x7b;FECHA_PROC&#x7d;</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -358,44 +294,8 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Set variables</from>
-      <to>Get File Names From DB</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>Imp. Service Report Into MMSC_SERVICE_ZTE_AUX</from>
-      <to>Write To Log</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>N</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>UpFilesTable</from>
-      <to>Update TIME_OF_PERIOD</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>Update TIME_OF_PERIOD</from>
-      <to>Merge MMSC_SERVICE_ZTE_AUX &#x26; MMSC_SERVICE_ZTE_TMP</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>Write To Log</from>
-      <to>Update TIME_OF_PERIOD</to>
+      <from>Truncar Particion para &#x24;&#x7b;FECHA_PROC&#x7d;</from>
+      <to>Merge Into MMSC_SERVICE_ZTE_HOUR</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>

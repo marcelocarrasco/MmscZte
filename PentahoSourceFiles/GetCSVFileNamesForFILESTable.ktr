@@ -181,6 +181,21 @@
       <exclude_filemask>.&#x2a;&#x28;&#x3f;i&#x29;&#x28;MMS_KPI_Report&#x29;.&#x2a;&#x28;&#x3f;-i&#x29;&#x5c;.csv</exclude_filemask>
       <file_required>N</file_required>
       <include_subfolders>N</include_subfolders>
+      <name>&#x24;&#x7b;MMSCZTE-HOME&#x7d;&#x2f;Data&#x2f;ARG</name>
+      <filemask>.&#x2a;&#x28;&#x3f;i&#x29;&#x28;MMS_KPI_Report&#x29;.&#x2a;&#x28;&#x3f;-i&#x29;&#x5c;.csv</filemask>
+      <exclude_filemask>.&#x2a;&#x28;&#x3f;i&#x29;&#x28;MMS_Service_Hour_&#x29;.&#x2a;&#x28;&#x3f;-i&#x29;&#x5c;.csv</exclude_filemask>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+      <name>&#x24;&#x7b;MMSCZTE-HOME&#x7d;&#x2f;Data&#x2f;UY</name>
+      <filemask>.&#x2a;&#x28;&#x3f;i&#x29;&#x28;MMS_KPI_Report&#x29;.&#x2a;&#x28;&#x3f;-i&#x29;&#x5c;.csv</filemask>
+      <exclude_filemask>.&#x2a;&#x28;&#x3f;i&#x29;&#x28;MMS_Service_Hour_&#x29;.&#x2a;&#x28;&#x3f;-i&#x29;&#x5c;.csv</exclude_filemask>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+      <name>&#x24;&#x7b;MMSCZTE-HOME&#x7d;&#x2f;Data&#x2f;PY</name>
+      <filemask>.&#x2a;&#x28;&#x3f;i&#x29;&#x28;MMS_KPI_Report&#x29;.&#x2a;&#x28;&#x3f;-i&#x29;&#x5c;.csv</filemask>
+      <exclude_filemask>.&#x2a;&#x28;&#x3f;i&#x29;&#x28;MMS_Service_Hour_&#x29;.&#x2a;&#x28;&#x3f;-i&#x29;&#x5c;.csv</exclude_filemask>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
     </file>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>

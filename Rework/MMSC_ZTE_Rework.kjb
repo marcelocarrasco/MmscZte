@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <job>
-  <name>MMSC_ZTE_EndToEnd</name>
+  <name>MMSC_ZTE_Rework</name>
     <description/>
     <extended_description/>
     <job_version/>
@@ -17,6 +17,30 @@
             <description>Formato YYYYMMDD, se pasa la fecha del dia anterior.</description>
         </parameter>
     </parameters>
+  <connection>
+    <name>db_connection</name>
+    <server>&#x24;&#x7b;DB-HOST&#x7d;</server>
+    <type>ORACLE</type>
+    <access>Native</access>
+    <database>&#x24;&#x7b;DB-NAME&#x7d;</database>
+    <port>&#x24;&#x7b;DB-PORT&#x7d;</port>
+    <username>&#x24;&#x7b;DB-USER&#x7d;</username>
+    <password>&#x24;&#x7b;DB-PASSWORD&#x7d;</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;DB-PORT&#x7d;</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>Y</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+    </attributes>
+  </connection>
     <slaveservers>
     </slaveservers>
 <job-log-table><connection/>
@@ -65,7 +89,7 @@
       <type>TRANS</type>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;SetEnvironment.ktr</filename>
+      <filename>&#x24;&#x7b;MMSCZTE-HOME&#x7d;&#x2f;PentahoSourceFiles&#x2f;SetEnvironment.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -100,7 +124,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>560</xloc>
-      <yloc>304</yloc>
+      <yloc>368</yloc>
       </entry>
     <entry>
       <name>GetFilesFromServer</name>
@@ -154,7 +178,7 @@
       <type>JOB</type>
       <specification_method>filename</specification_method>
       <job_object_id/>
-      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;PopulateFilesTable.kjb</filename>
+      <filename>&#x24;&#x7b;MMSCZTE-HOME&#x7d;&#x2f;PentahoSourceFiles&#x2f;PopulateFilesTable.kjb</filename>
       <jobname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -185,7 +209,7 @@
       <type>JOB</type>
       <specification_method>filename</specification_method>
       <job_object_id/>
-      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;MMSC_SERVICE_ZTE_EndToEnd.kjb</filename>
+      <filename>&#x24;&#x7b;MMSCZTE-HOME&#x7d;&#x2f;PentahoSourceFiles&#x2f;MMSC_SERVICE_ZTE_EndToEnd.kjb</filename>
       <jobname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -216,7 +240,7 @@
       <type>TRANS</type>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;CalSumarizacionesDAY_BH_IBHW.ktr</filename>
+      <filename>&#x24;&#x7b;MMSCZTE-HOME&#x7d;&#x2f;PentahoSourceFiles&#x2f;CalSumarizacionesDAY_BH_IBHW.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -241,7 +265,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>816</xloc>
-      <yloc>304</yloc>
+      <yloc>368</yloc>
       </entry>
     <entry>
       <name>Write To Log</name>
@@ -253,8 +277,24 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>704</xloc>
-      <yloc>240</yloc>
+      <xloc>560</xloc>
+      <yloc>256</yloc>
+      </entry>
+    <entry>
+      <name>Limpia Tabla FILES</name>
+      <description/>
+      <type>SQL</type>
+      <sql>DELETE FROM FILES WHERE&#xa;  NOMBRE_CSV LIKE &#x27;&#x24;&#x7b;MMSCZTE-HOME&#x7d;&#x2f;Data&#x2f;&#x25;Service&#x25;&#x24;&#x7b;FECHA_PROC&#x7d;&#x25;.csv&#x27;</sql>
+      <useVariableSubstitution>T</useVariableSubstitution>
+      <sqlfromfile>F</sqlfromfile>
+      <sqlfilename/>
+      <sendOneStatement>F</sendOneStatement>
+      <connection>db_connection</connection>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>256</xloc>
+      <yloc>288</yloc>
       </entry>
   </entries>
   <hops>
@@ -266,15 +306,6 @@
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
       <unconditional>Y</unconditional>
-    </hop>
-    <hop>
-      <from>SetEnvironment</from>
-      <to>GetFilesFromServer</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
     </hop>
     <hop>
       <from>GetFilesFromServer</from>
@@ -339,14 +370,41 @@
       <evaluation>Y</evaluation>
       <unconditional>N</unconditional>
     </hop>
+    <hop>
+      <from>SetEnvironment</from>
+      <to>Limpia Tabla FILES</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Limpia Tabla FILES</from>
+      <to>GetFilesFromServer</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>GetFilesFromServer</from>
+      <to>Write To Log</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
   </hops>
   <notepads>
     <notepad>
-      <note>FECHA_PROC &#x3d; sysdate &#x28;YYYYMMDD&#x29;, la info consignada en los archivos corresponde al dia anterior, &#xa;es decir, la info viene a dia vencido.&#xa;---------------------------------------------------------------------------------------------------------------------&#xa;Para calcular las sumarizaciones se pasa como parametro FECHA_PROC y dentro del&#xa;procedimiento, calculo FECHA_PROC - 1.</note>
+      <note>														REWORK&#xa;														&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#xa;FECHA_PROC &#x3d; sysdate &#x28;YYYYMMDD&#x29;, la info consignada en los archivos corresponde al dia anterior, &#xa;es decir, la info viene a dia vencido.&#xa;---------------------------------------------------------------------------------------------------------------------&#xa;Para calcular las sumarizaciones se pasa como parametro FECHA_PROC y dentro del&#xa;procedimiento, calculo FECHA_PROC - 1.</note>
       <xloc>112</xloc>
       <yloc>16</yloc>
       <width>692</width>
-      <heigth>95</heigth>
+      <heigth>129</heigth>
       <fontname>Sans</fontname>
       <fontsize>10</fontsize>
       <fontbold>N</fontbold>

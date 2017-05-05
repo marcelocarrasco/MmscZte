@@ -1,22 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <job>
-  <name>MMSC_ZTE_EndToEnd</name>
+  <name>Pop. MMSC_REPORT_KPI_ZTE_DAY_AUX Table</name>
     <description/>
     <extended_description/>
     <job_version/>
     <job_status>0</job_status>
   <directory>&#x2f;</directory>
   <created_user>-</created_user>
-  <created_date>2017&#x2f;03&#x2f;17 14&#x3a;22&#x3a;32.135</created_date>
+  <created_date>2017&#x2f;04&#x2f;03 15&#x3a;30&#x3a;03.708</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2017&#x2f;03&#x2f;17 14&#x3a;22&#x3a;32.135</modified_date>
+  <modified_date>2017&#x2f;04&#x2f;03 15&#x3a;30&#x3a;03.708</modified_date>
     <parameters>
-        <parameter>
-            <name>FECHA_PROC</name>
-            <default_value/>
-            <description>Formato YYYYMMDD, se pasa la fecha del dia anterior.</description>
-        </parameter>
     </parameters>
+  <connection>
+    <name>db_connection</name>
+    <server>&#x24;&#x7b;DB-HOST&#x7d;</server>
+    <type>ORACLE</type>
+    <access>Native</access>
+    <database>&#x24;&#x7b;DB-NAME&#x7d;</database>
+    <port>&#x24;&#x7b;DB-PORT&#x7d;</port>
+    <username>&#x24;&#x7b;DB-USER&#x7d;</username>
+    <password>&#x24;&#x7b;DB-PASSWORD&#x7d;</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;DB-PORT&#x7d;</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>Y</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+    </attributes>
+  </connection>
     <slaveservers>
     </slaveservers>
 <job-log-table><connection/>
@@ -56,8 +75,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>48</xloc>
-      <yloc>176</yloc>
+      <xloc>141</xloc>
+      <yloc>94</yloc>
       </entry>
     <entry>
       <name>SetEnvironment</name>
@@ -89,8 +108,8 @@
       </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>176</xloc>
-      <yloc>176</yloc>
+      <xloc>285</xloc>
+      <yloc>94</yloc>
       </entry>
     <entry>
       <name>Success</name>
@@ -99,124 +118,16 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>560</xloc>
-      <yloc>304</yloc>
+      <xloc>256</xloc>
+      <yloc>448</yloc>
       </entry>
     <entry>
-      <name>GetFilesFromServer</name>
-      <description/>
-      <type>SHELL</type>
-      <filename/>
-      <work_directory/>
-      <arg_from_previous>N</arg_from_previous>
-      <exec_per_row>N</exec_per_row>
-      <set_logfile>N</set_logfile>
-      <logfile/>
-      <set_append_logfile>N</set_append_logfile>
-      <logext/>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <insertScript>Y</insertScript>
-      <script>&#x23;&#x21;&#x2f;bin&#x2f;bash&#xa;&#xa;&#x24;&#x7b;SCP-ARG&#x7d;&#xa;&#x24;&#x7b;SCP-UY&#x7d;&#xa;&#x24;&#x7b;SCP-PY&#x7d;&#xa;</script>
-      <loglevel>Basic</loglevel>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>320</xloc>
-      <yloc>176</yloc>
-      </entry>
-    <entry>
-      <name>Cleanup Files</name>
-      <description/>
-      <type>SHELL</type>
-      <filename/>
-      <work_directory/>
-      <arg_from_previous>N</arg_from_previous>
-      <exec_per_row>N</exec_per_row>
-      <set_logfile>N</set_logfile>
-      <logfile/>
-      <set_append_logfile>N</set_append_logfile>
-      <logext/>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <insertScript>Y</insertScript>
-      <script>&#x23;&#x21;&#x2f;bin&#x2f;bash&#xa;&#xa;for f in &#x24;&#x7b;MMSCZTE-HOME&#x7d;&#x2f;Data&#x2f;&#x2a;&#x2a;&#x2f;&#x2a;.csv&#xa;do&#xa;  &#x23; take action on each file. &#x24;f store current file name&#xa;  &#x23;sed -n &#x27;&#x2f;Request&#x2f;,&#x24;&#x7b;p&#x7d;&#x27; &#x22;&#x24;f&#x22; &#x3e; &#x22;&#x24;f&#x22;&#xa;  mv &#x22;&#x24;f&#x22; &#x60;echo &#x24;f &#x7c; tr &#x27;&#x28;&#x27; &#x27;_&#x27; &#x7c; tr &#x27;&#x29;&#x27; &#x27;_&#x27; &#x7c; tr &#x27; &#x27; &#x27;_&#x27;&#x60;&#xa;done&#xa;&#x23;&#xa;&#x23; Service Hour Report files&#xa;&#x23;&#xa;for arc in &#x24;&#x7b;MMSCZTE-HOME&#x7d;&#x2f;Data&#x2f;&#x2a;&#x2a;&#x2f;MMS_Service_Hour&#x2a;.csv&#xa;do&#xa;  &#x23; Delete all trailing blank lines at end of file &#x28;only&#x29;.&#xa;  sed -i &#x27;&#x2f;&#x5e;&#x5c;s&#x2a;&#x24;&#x2f;d&#x27; &#x24;arc&#xa;  &#x23; delete first line of current file name&#xa;  sed -i &#x27;1,2d&#x27; &#x24;arc&#xa;  &#x23;&#xa;  sed -i &#x27;s&#x2f;&#x24;&#x2f;,&#x24;&#x7b;FECHA_PROC&#x7d;&#x2f;g&#x27; &#x24;arc&#xa;  &#x23; Delete the extra carriage return&#xa;  sed -i &#x27;s&#x2f;&#x5c;r&#x2f;&#x2f;g&#x27; &#x24;arc&#xa;  &#x23; Add new header&#xa;  sed -i &#x27;1iMMSC,PAIS,TIME_OF_PERIOD,NBR_MMS_SENT,NBR_MMS_SENT_BY_TERMINAL,NBR_MMS_SENT_BY_APP,NBR_MMS_RECEIVED_BY_TERMINAL,NBR_MMSC_FWR_TO_OTHER_MMSC,NBR_MMSC_FWR_REC_FROM_MMSC,NBR_TERM_TO_TERM,NBR_TERM_TO_APP,FECHA_PROC&#x27; &#x24;arc&#xa;  &#x23; Translate Argentina To ARG&#xa;  sed -i &#x27;s&#x2f;Argentina&#x2f;ARG&#x2f;g&#x27; &#x24;arc&#xa;  &#x23; Translate Uruguay To UY&#xa;  sed -i &#x27;s&#x2f;Uruguay&#x2f;UY&#x2f;g&#x27; &#x24;arc&#xa;  &#x23; Translate Paraguay To PY&#xa;  sed -i &#x27;s&#x2f;Paraguay&#x2f;PY&#x2f;g&#x27; &#x24;arc&#xa;done&#xa;&#x23;&#xa;&#x23; License Statistic Report files &#x28;se descarta hasta nuevo aviso&#x29;&#xa;&#x23;&#xa;&#x23;for f in &#x24;&#x7b;MMSCZTE-HOME&#x7d;&#x2f;Data&#x2f;&#x2a;.csv&#xa;&#x23;do&#xa;  &#x23; take action on each file. &#x24;f store current file name&#xa;  &#x23;sed -n &#x27;&#x2f;Request&#x2f;,&#x24;&#x7b;p&#x7d;&#x27; &#x22;&#x24;f&#x22; &#x3e; &#x22;&#x24;f&#x22;&#xa;  &#x23;mv &#x22;&#x24;f&#x22; &#x60;echo &#x24;f &#x7c; tr &#x27;&#x28;&#x27; &#x27;_&#x27; &#x7c; tr &#x27;&#x29;&#x27; &#x27;_&#x27; &#x7c; tr &#x27; &#x27; &#x27;_&#x27;&#x60;&#xa;&#x23;done&#xa;&#x23;&#xa;&#x23;for arc in &#x24;&#x7b;MMSCZTE-HOME&#x7d;&#x2f;Data&#x2f;MMS_License_Statistic_Report__daily__&#x2a;.csv&#xa;&#x23;do&#xa;  &#x23; Delete all trailing blank lines at end of file &#x28;only&#x29;.&#xa;  &#x23;sed -i &#x27;&#x2f;&#x5e;&#x5c;s&#x2a;&#x24;&#x2f;d&#x27; &#x24;arc&#xa;  &#x23; delete first twoo lines of current file name&#xa;  &#x23;sed -i &#x27;1,2d&#x27; &#x24;arc&#xa;  &#x23; Add new header&#xa;  &#x23;sed -i &#x27;1iMMSC,FECHA,MMS_BUSY_SERVICE_TRAFFIC&#x27; &#x24;arc&#xa;&#x23;done&#xa;</script>
-      <loglevel>Basic</loglevel>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>464</xloc>
-      <yloc>176</yloc>
-      </entry>
-    <entry>
-      <name>PopulateFilesTable</name>
-      <description/>
-      <type>JOB</type>
-      <specification_method>filename</specification_method>
-      <job_object_id/>
-      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;PopulateFilesTable.kjb</filename>
-      <jobname/>
-      <arg_from_previous>N</arg_from_previous>
-      <params_from_previous>N</params_from_previous>
-      <exec_per_row>N</exec_per_row>
-      <set_logfile>N</set_logfile>
-      <logfile/>
-      <logext/>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <loglevel>Nothing</loglevel>
-      <slave_server_name/>
-      <wait_until_finished>Y</wait_until_finished>
-      <follow_abort_remote>N</follow_abort_remote>
-      <expand_remote_job>N</expand_remote_job>
-      <create_parent_folder>N</create_parent_folder>
-      <pass_export>N</pass_export>
-      <parameters>        <pass_all_parameters>Y</pass_all_parameters>
-      </parameters>      <set_append_logfile>N</set_append_logfile>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>608</xloc>
-      <yloc>176</yloc>
-      </entry>
-    <entry>
-      <name>MMSC_SERVICE_ZTE_EndToEnd</name>
-      <description/>
-      <type>JOB</type>
-      <specification_method>filename</specification_method>
-      <job_object_id/>
-      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;MMSC_SERVICE_ZTE_EndToEnd.kjb</filename>
-      <jobname/>
-      <arg_from_previous>N</arg_from_previous>
-      <params_from_previous>N</params_from_previous>
-      <exec_per_row>N</exec_per_row>
-      <set_logfile>N</set_logfile>
-      <logfile/>
-      <logext/>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <loglevel>Nothing</loglevel>
-      <slave_server_name/>
-      <wait_until_finished>Y</wait_until_finished>
-      <follow_abort_remote>N</follow_abort_remote>
-      <expand_remote_job>N</expand_remote_job>
-      <create_parent_folder>N</create_parent_folder>
-      <pass_export>N</pass_export>
-      <parameters>        <pass_all_parameters>Y</pass_all_parameters>
-      </parameters>      <set_append_logfile>N</set_append_logfile>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>816</xloc>
-      <yloc>176</yloc>
-      </entry>
-    <entry>
-      <name>Calc. Sumarizaciones DAY BH IBHW</name>
+      <name>Get File Names From DB</name>
       <description/>
       <type>TRANS</type>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;CalSumarizacionesDAY_BH_IBHW.ktr</filename>
+      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;GetFileNamesFromDB.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -240,21 +151,126 @@
       </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>816</xloc>
-      <yloc>304</yloc>
+      <xloc>848</xloc>
+      <yloc>224</yloc>
       </entry>
     <entry>
-      <name>Write To Log</name>
+      <name>Imp. Service Report Into MMSC_SERVICE_ZTE_AUX</name>
       <description/>
-      <type>WRITE_TO_LOG</type>
-      <logmessage>&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#xa;&#x3d;&#x3d;&#x3d;&#x3d;&#x3e;&#x3e;&#x3e; No hay archivos a procesar o estan vacios &#x3c;&#x3c;&#x3c;&#x3d;&#x3d;&#x3d;&#x3d;&#xa;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;&#x3d;</logmessage>
-      <loglevel>Error</loglevel>
-      <logsubject/>
+      <type>TRANS</type>
+      <specification_method>filename</specification_method>
+      <trans_object_id/>
+      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;ImportServiceReportIntoMMSC_SERVICE_ZTE_AUX.ktr</filename>
+      <transname/>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>Y</exec_per_row>
+      <clear_rows>Y</clear_rows>
+      <clear_files>Y</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <parameters>        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>848</xloc>
+      <yloc>336</yloc>
+      </entry>
+    <entry>
+      <name>Truncate MMSC_REPORT_KPI_ZTE_DAY_AUX table</name>
+      <description/>
+      <type>TRUNCATE_TABLES</type>
+      <connection>db_connection</connection>
+      <arg_from_previous>N</arg_from_previous>
+      <fields>
+        <field>
+          <name>MMSC_REPORT_KPI_ZTE_DAY_AUX</name>
+          <schemaname>&#x24;&#x7b;DB-SCHEMA&#x7d;</schemaname>
+        </field>
+      </fields>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>704</xloc>
-      <yloc>240</yloc>
+      <xloc>528</xloc>
+      <yloc>96</yloc>
+      </entry>
+    <entry>
+      <name>Merge MMSC_SERVICE_ZTE_AUX &#x26; MMSC_SERVICE_ZTE_TMP</name>
+      <description/>
+      <type>SQL</type>
+      <sql>merge into MMSC_SERVICE_ZTE_AUX AUX&#xa;USING &#x28;SELECT FECHA,&#xa;              PAIS,&#xa;              MMSC,&#xa;              NBR_MMS_SENT,&#xa;              NBR_MMS_SENT_BY_TERMINAL,&#xa;              NBR_MMS_SENT_BY_APP,&#xa;              NBR_MMS_RECEIVED_BY_TERMINAL,&#xa;              NBR_MMSC_FWR_TO_OTHER_MMSC,&#xa;              NBR_MMSC_FWR_REC_FROM_MMSC,&#xa;              NBR_TERM_TO_TERM,&#xa;              NBR_TERM_TO_APP,&#xa;              TIME_OF_PERIOD,&#xa;              FECHA_PROC&#xa;        FROM MMSC_SERVICE_ZTE_TMP&#x29; TMP&#xa;ON &#x28;AUX.FECHA &#x3d; TMP.FECHA AND AUX.PAIS &#x3d; TMP.PAIS AND AUX.MMSC &#x3d; TMP.MMSC AND AUX.TIME_OF_PERIOD &#x3d; TMP.TIME_OF_PERIOD&#x29;&#xa;WHEN NOT MATCHED THEN&#xa;  INSERT&#x28;PAIS,MMSC,NBR_MMS_SENT,NBR_MMS_SENT_BY_TERMINAL,NBR_MMS_SENT_BY_APP,NBR_MMS_RECEIVED_BY_TERMINAL,&#xa;        NBR_MMSC_FWR_TO_OTHER_MMSC,NBR_MMSC_FWR_REC_FROM_MMSC,NBR_TERM_TO_TERM,NBR_TERM_TO_APP,TIME_OF_PERIOD,FECHA_PROC&#x29; &#xa;  VALUES &#x28;TMP.PAIS,&#xa;          TMP.MMSC,&#xa;          TMP.NBR_MMS_SENT,&#xa;          TMP.NBR_MMS_SENT_BY_TERMINAL,&#xa;          TMP.NBR_MMS_SENT_BY_APP,&#xa;          TMP.NBR_MMS_RECEIVED_BY_TERMINAL,&#xa;          TMP.NBR_MMSC_FWR_TO_OTHER_MMSC,&#xa;          TMP.NBR_MMSC_FWR_REC_FROM_MMSC,&#xa;          TMP.NBR_TERM_TO_TERM,&#xa;          TMP.NBR_TERM_TO_APP,&#xa;          TMP.TIME_OF_PERIOD,&#xa;          TMP.FECHA_PROC&#x29;</sql>
+      <useVariableSubstitution>F</useVariableSubstitution>
+      <sqlfromfile>F</sqlfromfile>
+      <sqlfilename/>
+      <sendOneStatement>F</sendOneStatement>
+      <connection>db_connection</connection>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>256</xloc>
+      <yloc>336</yloc>
+      </entry>
+    <entry>
+      <name>UpFilesTable</name>
+      <description/>
+      <type>JOB</type>
+      <specification_method>filename</specification_method>
+      <job_object_id/>
+      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;UpFilesTable.kjb</filename>
+      <jobname/>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Nothing</loglevel>
+      <slave_server_name/>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <expand_remote_job>N</expand_remote_job>
+      <create_parent_folder>N</create_parent_folder>
+      <pass_export>N</pass_export>
+      <parameters>        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>      <set_append_logfile>N</set_append_logfile>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>544</xloc>
+      <yloc>336</yloc>
+      </entry>
+    <entry>
+      <name>Set &#x24;&#x7b;NOMBRE-FILE&#x7d; &#x3d; &#x24;&#x7b;KPI-FILE&#x7d;</name>
+      <description/>
+      <type>SET_VARIABLES</type>
+      <replacevars>Y</replacevars>
+      <filename>&#x24;&#x7b;MMSCZTE-HOME&#x7d;&#x2f;mmsczte_cnf.properties</filename>
+      <file_variable_type>CURRENT_JOB</file_variable_type>
+      <fields>
+        <field>
+          <variable_name>&#x24;&#x7b;NOMBRE-FILE&#x7d;</variable_name>
+          <variable_value>&#x24;&#x7b;KPI-FILE&#x7d;</variable_value>
+          <variable_type>CURRENT_JOB</variable_type>
+        </field>
+      </fields>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>848</xloc>
+      <yloc>96</yloc>
       </entry>
   </entries>
   <hops>
@@ -269,7 +285,7 @@
     </hop>
     <hop>
       <from>SetEnvironment</from>
-      <to>GetFilesFromServer</to>
+      <to>Truncate MMSC_REPORT_KPI_ZTE_DAY_AUX table</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -277,8 +293,17 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>GetFilesFromServer</from>
-      <to>Cleanup Files</to>
+      <from>Truncate MMSC_REPORT_KPI_ZTE_DAY_AUX table</from>
+      <to>Get File Names From DB</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>N</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Get File Names From DB</from>
+      <to>Imp. Service Report Into MMSC_SERVICE_ZTE_AUX</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -286,8 +311,8 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Cleanup Files</from>
-      <to>PopulateFilesTable</to>
+      <from>Truncate MMSC_REPORT_KPI_ZTE_DAY_AUX table</from>
+      <to>Set &#x24;&#x7b;NOMBRE-FILE&#x7d; &#x3d; &#x24;&#x7b;KPI-FILE&#x7d;</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -295,8 +320,8 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>PopulateFilesTable</from>
-      <to>MMSC_SERVICE_ZTE_EndToEnd</to>
+      <from>Set &#x24;&#x7b;NOMBRE-FILE&#x7d; &#x3d; &#x24;&#x7b;KPI-FILE&#x7d;</from>
+      <to>Get File Names From DB</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -304,8 +329,8 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Calc. Sumarizaciones DAY BH IBHW</from>
-      <to>Success</to>
+      <from>Imp. Service Report Into MMSC_SERVICE_ZTE_AUX</from>
+      <to>UpFilesTable</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -313,8 +338,8 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>MMSC_SERVICE_ZTE_EndToEnd</from>
-      <to>Calc. Sumarizaciones DAY BH IBHW</to>
+      <from>UpFilesTable</from>
+      <to>Merge MMSC_SERVICE_ZTE_AUX &#x26; MMSC_SERVICE_ZTE_TMP</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -322,16 +347,7 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>MMSC_SERVICE_ZTE_EndToEnd</from>
-      <to>Write To Log</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>N</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>Write To Log</from>
+      <from>Merge MMSC_SERVICE_ZTE_AUX &#x26; MMSC_SERVICE_ZTE_TMP</from>
       <to>Success</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -341,27 +357,6 @@
     </hop>
   </hops>
   <notepads>
-    <notepad>
-      <note>FECHA_PROC &#x3d; sysdate &#x28;YYYYMMDD&#x29;, la info consignada en los archivos corresponde al dia anterior, &#xa;es decir, la info viene a dia vencido.&#xa;---------------------------------------------------------------------------------------------------------------------&#xa;Para calcular las sumarizaciones se pasa como parametro FECHA_PROC y dentro del&#xa;procedimiento, calculo FECHA_PROC - 1.</note>
-      <xloc>112</xloc>
-      <yloc>16</yloc>
-      <width>692</width>
-      <heigth>95</heigth>
-      <fontname>Sans</fontname>
-      <fontsize>10</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-      <drawshadow>Y</drawshadow>
-    </notepad>
   </notepads>
 
 </job>
