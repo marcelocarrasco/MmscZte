@@ -11,6 +11,7 @@ export ORACLE_SID=DSMART2
 export ORAENV_ASK=NO
 
 FECHA_PROC=$(date +%Y%m%d -d "$1 + 1 day")
+#FECHA_PROC=$1
 
 echo "======================================================"
 echo "Se copiaran los archivos generados el dia: $FECHA_PROC"

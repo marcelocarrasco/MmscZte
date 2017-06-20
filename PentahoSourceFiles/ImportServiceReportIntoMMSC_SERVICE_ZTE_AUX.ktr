@@ -103,7 +103,7 @@
     <server>&#x24;&#x7b;DB-HOST&#x7d;</server>
     <type>ORACLE</type>
     <access>Native</access>
-    <database> &#x24;&#x7b;DB-NAME&#x7d;</database>
+    <database>&#x24;&#x7b;DB-NAME&#x7d;</database>
     <port>&#x24;&#x7b;DB-PORT&#x7d;</port>
     <username>&#x24;&#x7b;DB-USER&#x7d;</username>
     <password>&#x24;&#x7b;DB-PASSWORD&#x7d;</password>
@@ -115,7 +115,7 @@
       <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
       <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
       <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;DB-PORT&#x7d;</attribute></attribute>
-      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>Y</attribute></attribute>
       <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
       <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
       <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>Y</attribute></attribute>
@@ -139,7 +139,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <filename>&#x2f;home&#x2f;oracle&#x2f;MmscZte&#x2f;Data&#x2f;ARG&#x2f;MMS_Service_Hour_Report__hourly__20170326020032752.csv</filename>
+    <filename>&#x2f;home&#x2f;oracle&#x2f;MmscZte&#x2f;Data&#x2f;ARG&#x2f;MMS_Service_Hour_Report__hourly__20170520020017923.csv</filename>
     <filename_field>NOMBRE_CSV</filename_field>
     <rownum_field/>
     <include_filename>Y</include_filename>
@@ -148,7 +148,7 @@
     <header>Y</header>
     <buffer_size>50000</buffer_size>
     <lazy_conversion>Y</lazy_conversion>
-    <add_filename_result>Y</add_filename_result>
+    <add_filename_result>N</add_filename_result>
     <parallel>N</parallel>
     <newline_possible>N</newline_possible>
     <encoding>UTF-8</encoding>
@@ -182,7 +182,7 @@
         <currency>&#x24;</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>13</length>
+        <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
@@ -209,7 +209,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>NBR_MMS_SENT_BY_APP</name>
+        <name>NBR_MMS_RECEIVED_BY_TERMINAL</name>
         <type>Integer</type>
         <format>&#x23;</format>
         <currency>&#x24;</currency>
@@ -220,7 +220,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>NBR_MMS_RECEIVED_BY_TERMINAL</name>
+        <name>NBR_MMS_SENT_BY_APP</name>
         <type>Integer</type>
         <format>&#x23;</format>
         <currency>&#x24;</currency>
@@ -393,7 +393,7 @@
         <group/>
         <nullif/>
         <trim_type>none</trim_type>
-        <length>13</length>
+        <length>11</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -421,7 +421,7 @@
         <precision>0</precision>
       </field>
       <field>
-        <name>NBR_MMS_SENT_BY_APP</name>
+        <name>NBR_MMS_RECEIVED_BY_TERMINAL</name>
         <type>Integer</type>
         <format>&#x23;</format>
         <currency>&#x24;</currency>
@@ -433,7 +433,7 @@
         <precision>0</precision>
       </field>
       <field>
-        <name>NBR_MMS_RECEIVED_BY_TERMINAL</name>
+        <name>NBR_MMS_SENT_BY_APP</name>
         <type>Integer</type>
         <format>&#x23;</format>
         <currency>&#x24;</currency>
@@ -493,6 +493,18 @@
         <precision>0</precision>
       </field>
       <field>
+        <name>FECHA_PROC</name>
+        <type>Date</type>
+        <format>yyyyMMdd</format>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
         <name>NOMBRE_CSV</name>
         <type>String</type>
         <format/>
@@ -501,7 +513,7 @@
         <group/>
         <nullif/>
         <trim_type>none</trim_type>
-        <length>-1</length>
+        <length>500</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -611,12 +623,12 @@
           <stream_name>NBR_MMS_SENT_BY_TERMINAL</stream_name>
         </field>
         <field>
-          <column_name>NBR_MMS_SENT_BY_APP</column_name>
-          <stream_name>NBR_MMS_SENT_BY_APP</stream_name>
-        </field>
-        <field>
           <column_name>NBR_MMS_RECEIVED_BY_TERMINAL</column_name>
           <stream_name>NBR_MMS_RECEIVED_BY_TERMINAL</stream_name>
+        </field>
+        <field>
+          <column_name>NBR_MMS_SENT_BY_APP</column_name>
+          <stream_name>NBR_MMS_SENT_BY_APP</stream_name>
         </field>
         <field>
           <column_name>NBR_MMSC_FWR_TO_OTHER_MMSC</column_name>
@@ -684,10 +696,10 @@
         <name>NBR_MMS_SENT_BY_TERMINAL</name>
         </field>
       <field>
-        <name>NBR_MMS_SENT_BY_APP</name>
+        <name>NBR_MMS_RECEIVED_BY_TERMINAL</name>
         </field>
       <field>
-        <name>NBR_MMS_RECEIVED_BY_TERMINAL</name>
+        <name>NBR_MMS_SENT_BY_APP</name>
         </field>
       <field>
         <name>NBR_MMSC_FWR_TO_OTHER_MMSC</name>

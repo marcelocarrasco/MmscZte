@@ -12,9 +12,14 @@
   <modified_date>2017&#x2f;03&#x2f;17 14&#x3a;22&#x3a;32.135</modified_date>
     <parameters>
         <parameter>
+            <name>FECHA_FILES</name>
+            <default_value/>
+            <description/>
+        </parameter>
+        <parameter>
             <name>FECHA_PROC</name>
             <default_value/>
-            <description>Formato YYYYMMDD, se pasa la fecha del dia anterior.</description>
+            <description>Formato YYYYMMDD, dia que se quiere reprocesar.</description>
         </parameter>
     </parameters>
   <connection>
@@ -123,7 +128,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>560</xloc>
+      <xloc>640</xloc>
       <yloc>368</yloc>
       </entry>
     <entry>
@@ -146,7 +151,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>320</xloc>
+      <xloc>400</xloc>
       <yloc>176</yloc>
       </entry>
     <entry>
@@ -164,12 +169,12 @@
       <add_date>N</add_date>
       <add_time>N</add_time>
       <insertScript>Y</insertScript>
-      <script>&#x23;&#x21;&#x2f;bin&#x2f;bash&#xa;&#xa;for f in &#x24;&#x7b;MMSCZTE-HOME&#x7d;&#x2f;Data&#x2f;&#x2a;&#x2a;&#x2f;&#x2a;.csv&#xa;do&#xa;  &#x23; take action on each file. &#x24;f store current file name&#xa;  &#x23;sed -n &#x27;&#x2f;Request&#x2f;,&#x24;&#x7b;p&#x7d;&#x27; &#x22;&#x24;f&#x22; &#x3e; &#x22;&#x24;f&#x22;&#xa;  mv &#x22;&#x24;f&#x22; &#x60;echo &#x24;f &#x7c; tr &#x27;&#x28;&#x27; &#x27;_&#x27; &#x7c; tr &#x27;&#x29;&#x27; &#x27;_&#x27; &#x7c; tr &#x27; &#x27; &#x27;_&#x27;&#x60;&#xa;done&#xa;&#x23;&#xa;&#x23; Service Hour Report files&#xa;&#x23;&#xa;for arc in &#x24;&#x7b;MMSCZTE-HOME&#x7d;&#x2f;Data&#x2f;&#x2a;&#x2a;&#x2f;MMS_Service_Hour&#x2a;.csv&#xa;do&#xa;  &#x23; Delete all trailing blank lines at end of file &#x28;only&#x29;.&#xa;  sed -i &#x27;&#x2f;&#x5e;&#x5c;s&#x2a;&#x24;&#x2f;d&#x27; &#x24;arc&#xa;  &#x23; delete first line of current file name&#xa;  sed -i &#x27;1,2d&#x27; &#x24;arc&#xa;  &#x23;&#xa;  sed -i &#x27;s&#x2f;&#x24;&#x2f;,&#x24;&#x7b;FECHA_PROC&#x7d;&#x2f;g&#x27; &#x24;arc&#xa;  &#x23; Delete the extra carriage return&#xa;  sed -i &#x27;s&#x2f;&#x5c;r&#x2f;&#x2f;g&#x27; &#x24;arc&#xa;  &#x23; Add new header&#xa;  sed -i &#x27;1iMMSC,PAIS,TIME_OF_PERIOD,NBR_MMS_SENT,NBR_MMS_SENT_BY_TERMINAL,NBR_MMS_SENT_BY_APP,NBR_MMS_RECEIVED_BY_TERMINAL,NBR_MMSC_FWR_TO_OTHER_MMSC,NBR_MMSC_FWR_REC_FROM_MMSC,NBR_TERM_TO_TERM,NBR_TERM_TO_APP,FECHA_PROC&#x27; &#x24;arc&#xa;  &#x23; Translate Argentina To ARG&#xa;  sed -i &#x27;s&#x2f;Argentina&#x2f;ARG&#x2f;g&#x27; &#x24;arc&#xa;  &#x23; Translate Uruguay To UY&#xa;  sed -i &#x27;s&#x2f;Uruguay&#x2f;UY&#x2f;g&#x27; &#x24;arc&#xa;  &#x23; Translate Paraguay To PY&#xa;  sed -i &#x27;s&#x2f;Paraguay&#x2f;PY&#x2f;g&#x27; &#x24;arc&#xa;done&#xa;&#x23;&#xa;&#x23; License Statistic Report files &#x28;se descarta hasta nuevo aviso&#x29;&#xa;&#x23;&#xa;&#x23;for f in &#x24;&#x7b;MMSCZTE-HOME&#x7d;&#x2f;Data&#x2f;&#x2a;.csv&#xa;&#x23;do&#xa;  &#x23; take action on each file. &#x24;f store current file name&#xa;  &#x23;sed -n &#x27;&#x2f;Request&#x2f;,&#x24;&#x7b;p&#x7d;&#x27; &#x22;&#x24;f&#x22; &#x3e; &#x22;&#x24;f&#x22;&#xa;  &#x23;mv &#x22;&#x24;f&#x22; &#x60;echo &#x24;f &#x7c; tr &#x27;&#x28;&#x27; &#x27;_&#x27; &#x7c; tr &#x27;&#x29;&#x27; &#x27;_&#x27; &#x7c; tr &#x27; &#x27; &#x27;_&#x27;&#x60;&#xa;&#x23;done&#xa;&#x23;&#xa;&#x23;for arc in &#x24;&#x7b;MMSCZTE-HOME&#x7d;&#x2f;Data&#x2f;MMS_License_Statistic_Report__daily__&#x2a;.csv&#xa;&#x23;do&#xa;  &#x23; Delete all trailing blank lines at end of file &#x28;only&#x29;.&#xa;  &#x23;sed -i &#x27;&#x2f;&#x5e;&#x5c;s&#x2a;&#x24;&#x2f;d&#x27; &#x24;arc&#xa;  &#x23; delete first twoo lines of current file name&#xa;  &#x23;sed -i &#x27;1,2d&#x27; &#x24;arc&#xa;  &#x23; Add new header&#xa;  &#x23;sed -i &#x27;1iMMSC,FECHA,MMS_BUSY_SERVICE_TRAFFIC&#x27; &#x24;arc&#xa;&#x23;done&#xa;</script>
+      <script>&#x23;&#x21;&#x2f;bin&#x2f;bash&#xa;&#xa;for f in &#x24;&#x7b;MMSCZTE-HOME&#x7d;&#x2f;Data&#x2f;&#x2a;&#x2a;&#x2f;&#x2a;.csv&#xa;do&#xa;  &#x23; take action on each file. &#x24;f store current file name&#xa;  &#x23;sed -n &#x27;&#x2f;Request&#x2f;,&#x24;&#x7b;p&#x7d;&#x27; &#x22;&#x24;f&#x22; &#x3e; &#x22;&#x24;f&#x22;&#xa;  mv &#x22;&#x24;f&#x22; &#x60;echo &#x24;f &#x7c; tr &#x27;&#x28;&#x27; &#x27;_&#x27; &#x7c; tr &#x27;&#x29;&#x27; &#x27;_&#x27; &#x7c; tr &#x27; &#x27; &#x27;_&#x27;&#x60;&#xa;done&#xa;&#x23;&#xa;&#x23; Service Hour Report files&#xa;&#x23;&#xa;for arc in &#x24;&#x7b;MMSCZTE-HOME&#x7d;&#x2f;Data&#x2f;&#x2a;&#x2a;&#x2f;MMS_Service_Hour&#x2a;.csv&#xa;do&#xa;  &#x23; Delete all trailing blank lines at end of file &#x28;only&#x29;.&#xa;  sed -i &#x27;&#x2f;&#x5e;&#x5c;s&#x2a;&#x24;&#x2f;d&#x27; &#x24;arc&#xa;  &#x23; delete first line of current file name&#xa;  sed -i &#x27;1,2d&#x27; &#x24;arc&#xa;  &#x23;&#xa;  sed -i &#x27;s&#x2f;&#x24;&#x2f;,&#x24;&#x7b;FECHA_PROC&#x7d;&#x2f;g&#x27; &#x24;arc&#xa;  &#x23; Delete the extra carriage return&#xa;  sed -i &#x27;s&#x2f;&#x5c;r&#x2f;&#x2f;g&#x27; &#x24;arc&#xa;  &#x23; Add new header&#xa;  sed -i &#x27;1iMMSC,PAIS,TIME_OF_PERIOD,NBR_MMS_SENT,NBR_MMS_SENT_BY_TERMINAL,NBR_MMS_RECEIVED_BY_TERMINAL,NBR_MMS_SENT_BY_APP,NBR_MMSC_FWR_TO_OTHER_MMSC,NBR_MMSC_FWR_REC_FROM_MMSC,NBR_TERM_TO_TERM,NBR_TERM_TO_APP,FECHA_PROC&#x27; &#x24;arc&#xa;  &#x23; Translate Argentina To ARG&#xa;  sed -i &#x27;s&#x2f;Argentina&#x2f;ARG&#x2f;g&#x27; &#x24;arc&#xa;  &#x23; Translate Uruguay To UY&#xa;  sed -i &#x27;s&#x2f;Uruguay&#x2f;UY&#x2f;g&#x27; &#x24;arc&#xa;  &#x23; Translate Paraguay To PY&#xa;  sed -i &#x27;s&#x2f;Paraguay&#x2f;PY&#x2f;g&#x27; &#x24;arc&#xa;done&#xa;&#x23;&#xa;&#x23; License Statistic Report files &#x28;se descarta hasta nuevo aviso&#x29;&#xa;&#x23;&#xa;&#x23;for f in &#x24;&#x7b;MMSCZTE-HOME&#x7d;&#x2f;Data&#x2f;&#x2a;.csv&#xa;&#x23;do&#xa;  &#x23; take action on each file. &#x24;f store current file name&#xa;  &#x23;sed -n &#x27;&#x2f;Request&#x2f;,&#x24;&#x7b;p&#x7d;&#x27; &#x22;&#x24;f&#x22; &#x3e; &#x22;&#x24;f&#x22;&#xa;  &#x23;mv &#x22;&#x24;f&#x22; &#x60;echo &#x24;f &#x7c; tr &#x27;&#x28;&#x27; &#x27;_&#x27; &#x7c; tr &#x27;&#x29;&#x27; &#x27;_&#x27; &#x7c; tr &#x27; &#x27; &#x27;_&#x27;&#x60;&#xa;&#x23;done&#xa;&#x23;&#xa;&#x23;for arc in &#x24;&#x7b;MMSCZTE-HOME&#x7d;&#x2f;Data&#x2f;MMS_License_Statistic_Report__daily__&#x2a;.csv&#xa;&#x23;do&#xa;  &#x23; Delete all trailing blank lines at end of file &#x28;only&#x29;.&#xa;  &#x23;sed -i &#x27;&#x2f;&#x5e;&#x5c;s&#x2a;&#x24;&#x2f;d&#x27; &#x24;arc&#xa;  &#x23; delete first twoo lines of current file name&#xa;  &#x23;sed -i &#x27;1,2d&#x27; &#x24;arc&#xa;  &#x23; Add new header&#xa;  &#x23;sed -i &#x27;1iMMSC,FECHA,MMS_BUSY_SERVICE_TRAFFIC&#x27; &#x24;arc&#xa;&#x23;done&#xa;</script>
       <loglevel>Basic</loglevel>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>464</xloc>
+      <xloc>544</xloc>
       <yloc>176</yloc>
       </entry>
     <entry>
@@ -200,7 +205,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>608</xloc>
+      <xloc>688</xloc>
       <yloc>176</yloc>
       </entry>
     <entry>
@@ -231,7 +236,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>816</xloc>
+      <xloc>896</xloc>
       <yloc>176</yloc>
       </entry>
     <entry>
@@ -264,7 +269,7 @@
       </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>816</xloc>
+      <xloc>896</xloc>
       <yloc>368</yloc>
       </entry>
     <entry>
@@ -277,14 +282,14 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>560</xloc>
+      <xloc>640</xloc>
       <yloc>256</yloc>
       </entry>
     <entry>
-      <name>Limpia Tabla FILES</name>
+      <name>Limpia Tabla FILES &#x26; HOUR</name>
       <description/>
       <type>SQL</type>
-      <sql>DELETE FROM FILES WHERE&#xa;  NOMBRE_CSV LIKE &#x27;&#x24;&#x7b;MMSCZTE-HOME&#x7d;&#x2f;Data&#x2f;&#x25;Service&#x25;&#x24;&#x7b;FECHA_PROC&#x7d;&#x25;.csv&#x27;</sql>
+      <sql>DELETE FROM FILES WHERE&#xa;  NOMBRE_CSV LIKE &#x27;&#x24;&#x7b;MMSCZTE-HOME&#x7d;&#x2f;Data&#x2f;&#x25;Service&#x25;&#x24;&#x7b;FECHA_PROC&#x7d;&#x25;.csv&#x27;&#x3b;&#xa;DELETE FROM MMSC_SERVICE_ZTE_HOUR WHERE TO_CHAR&#x28;FECHA,&#x27;YYYYMMDD&#x27;&#x29; &#x3d; TO_CHAR&#x28;TO_DATE&#x28;&#x27;&#x24;&#x7b;FECHA_PROC&#x7d;&#x27;,&#x27;YYYYMMDD&#x27;&#x29;-1,&#x27;YYYYMMDD&#x27;&#x29;&#x3b;</sql>
       <useVariableSubstitution>T</useVariableSubstitution>
       <sqlfromfile>F</sqlfromfile>
       <sqlfilename/>
@@ -293,7 +298,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>256</xloc>
+      <xloc>400</xloc>
       <yloc>288</yloc>
       </entry>
   </entries>
@@ -306,15 +311,6 @@
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
       <unconditional>Y</unconditional>
-    </hop>
-    <hop>
-      <from>GetFilesFromServer</from>
-      <to>Cleanup Files</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
     </hop>
     <hop>
       <from>Cleanup Files</from>
@@ -371,16 +367,7 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>SetEnvironment</from>
-      <to>Limpia Tabla FILES</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>Limpia Tabla FILES</from>
+      <from>Limpia Tabla FILES &#x26; HOUR</from>
       <to>GetFilesFromServer</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -395,6 +382,24 @@
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
       <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>GetFilesFromServer</from>
+      <to>Cleanup Files</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>SetEnvironment</from>
+      <to>Limpia Tabla FILES &#x26; HOUR</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
       <unconditional>N</unconditional>
     </hop>
   </hops>
